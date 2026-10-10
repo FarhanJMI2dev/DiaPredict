@@ -23,7 +23,7 @@ The system utilizes a **Random Forest Classifier** served via **FastAPI**, backe
 
 5.Robust API Validation: Strict schema enforcement using Pydantic in FastAPI and Mongoose in Express.
 
----
+
 ---
 
 ## 🏗️ System Architecture
