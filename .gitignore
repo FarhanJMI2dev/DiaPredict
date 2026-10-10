@@ -1,0 +1,24 @@
+# Secret Environment Variables
+.env
+**/.env
+
+# Node.js Dependencies
+node_modules/
+**/node_modules/
+npm-debug.log*
+
+# Python & Virtual Environments
+.venv/
+**/__pycache__/
+**/*.pyc
+**/pyvenv.cfg
+
+# Machine Learning Data & Models
+ML-service/model/
+ML-service/Dataset/
+**/model/*.joblib
+**/Dataset/
+
+# System Files
+.DS_Store
+Thumbs.db
