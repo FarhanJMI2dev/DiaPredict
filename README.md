@@ -28,7 +28,7 @@ The system utilizes a **Random Forest Classifier** served via **FastAPI**, backe
 
 ## 🏗️ System Architecture
 
-```mermaid
+```
 diabetes-prediction-system/
 ├── ml-service/              # FastAPI ML Microservice
 │   ├── app.py               # REST API endpoints & Pydantic validation
