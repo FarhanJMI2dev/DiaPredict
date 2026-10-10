@@ -29,29 +29,24 @@ The system utilizes a **Random Forest Classifier** served via **FastAPI**, backe
 ## 🏗️ System Architecture
 
 ```mermaid
-flowchart LR
-    subgraph Frontend ["Frontend (React + Vite)"]
-        UI[CDC Health Questionnaire / Dashboard / Auth]
-    end
-
-    subgraph Backend ["Backend (Node.js + Express)"]
-        API[Auth & Clinical Record Controllers]
-        DB[(MongoDB)]
-    end
-
-    subgraph MLService ["ML Microservice (FastAPI :8000)"]
-        FastAPIApp[FastAPI REST API]
-        Scaler[StandardScaler .joblib]
-        RFModel[Random Forest Classifier .joblib]
-    end
-
-    UI -->|HTTP / Axios| API
-    API -->|Persist Records| DB
-    API -->|POST /predict| FastAPIApp
-    FastAPIApp --> Scaler --> RFModel
-    RFModel -->|Risk % & Binary Result| FastAPIApp
-    FastAPIApp -->|Prediction Response| API
-    API -->|Enriched Result| UI
+diabetes-prediction-system/
+├── ml-service/              # FastAPI ML Microservice
+│   ├── app.py               # REST API endpoints & Pydantic validation
+│   ├── train.py             # Reproducible model training script
+│   ├── requirements.txt     # Python dependencies
+│   └── model/               # Serialized model & scaler (.joblib)
+├── backend/                 # Node.js + Express REST API
+│   ├── server.js            # Express server entry point
+│   ├── config/              # MongoDB connection setup
+│   ├── controllers/         # Auth & Screening controllers
+│   ├── models/              # User & DiabetesRecord Mongoose schemas
+│   └── routes/              # Express API routes
+└── frontend/                # React + Vite Frontend Client
+    ├── src/
+    │   ├── components/      # UI components & form wizards
+    │   ├── pages/           # AssessRisk, Dashboard, Auth pages
+    │   └── services/        # Axios API client setup
+    └── package.json
 ```
 ---
 
